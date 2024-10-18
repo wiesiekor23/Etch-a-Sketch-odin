@@ -1,0 +1,4 @@
+.columnOfColumns {
+    display: flex;
+    flex-direction: row;
+}
