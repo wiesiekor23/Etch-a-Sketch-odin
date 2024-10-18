@@ -3,17 +3,27 @@ const controlPanel = document.querySelector("#control-panel");
 
 const blackButton = document.createElement("button");
 const resetButton = document.createElement("button");
+const colorButton = document.createElement("button");
 blackButton.textContent = "Paint it Black!";
-resetButton.textContent = "RESET";
-controlPanel.append(blackButton, resetButton);
+resetButton.textContent = "Reset";
+colorButton.textContent = "Colors"
+controlPanel.append(resetButton, blackButton, colorButton);
 
 resetButton.addEventListener("click", () =>{
-    resetBox();
+    resetGrid();
     usrInput = prompt("Give me a number from 1 to 100");
     createGrid();
-    //black();
     setColors();
-})
+    //black();
+});
+
+blackButton.addEventListener("click", () =>{
+    setBlack();
+});
+
+colorButton.addEventListener("click", () => {
+    setColors();
+});
 
 
 function createGrid() {
@@ -49,7 +59,6 @@ function setBlack() {
 
 
 function setColors() {
-    console.log(random256);
     const rows = document.querySelectorAll(".row");
     rows.forEach((row) => {
         row.addEventListener("mouseover", () => {
@@ -61,7 +70,7 @@ function setColors() {
     })
 };
 
-function resetBox() {
+function resetGrid() {
     const columns = document.querySelectorAll(".columnOfColumns")
     columns.forEach((column) => {
         column.remove();
