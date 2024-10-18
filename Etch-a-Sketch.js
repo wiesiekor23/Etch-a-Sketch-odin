@@ -13,7 +13,7 @@ resetButton.addEventListener("click", () =>{
     resetGrid();
     usrInput = prompt("Give me a number from 1 to 100");
     createGrid();
-    setColors();
+    //setColors();
     //black();
 });
 
@@ -51,23 +51,29 @@ function createGrid() {
 function setBlack() {
     const rows = document.querySelectorAll(".row");
     rows.forEach((row) => {
-        row.addEventListener("mouseover", () => {
-            row.setAttribute("style", "background: black;");
-        })
-    })
+        if (row.style.backgroundColor === "") {
+            row.addEventListener("mouseover", function cancelHandler() {
+                row.setAttribute("style", "background: black;");
+                row.removeEventListener("mouseover", cancelHandler);
+            });
+        };
+    });
 };
 
 
 function setColors() {
     const rows = document.querySelectorAll(".row");
     rows.forEach((row) => {
-        row.addEventListener("mouseover", () => {
-            row.setAttribute("style", `background: 
+        if (row.style.backgroundColor === "") {
+            row.addEventListener("mouseover", function cancelHandler() {
+                row.setAttribute("style", `background: 
                 rgb(${Math.floor(Math.random() * 257)}, 
                 ${Math.floor(Math.random() * 257)}, 
                 ${Math.floor(Math.random() * 257)});`);
-        })
-    })
+                row.removeEventListener("mouseover", cancelHandler);
+            });
+        };
+    });
 };
 
 function resetGrid() {
