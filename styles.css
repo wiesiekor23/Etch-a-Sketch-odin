@@ -3,23 +3,16 @@
     height: 640px;
     width: 640px;
     border: solid black;
-    /*align-items: stretch;*/
-    /*align-content: stretch;*/
-    /*justify-content: stretch;*/
 }
 
 .columnOfColumns {
     display: flex;
     flex-direction: column;
-    border: solid blue;
     flex-grow: 1;
-
 }
 
 .row {
     display: flex;
-    border: solid greenyellow;
-    /*align-items: stretch;*/
-    /*align-content: stretch;*/
+
     flex-grow: 1;
 }
