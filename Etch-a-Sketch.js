@@ -1,21 +1,20 @@
 let usrInput = 16;
-let darkenActive = true;
-let colorActive = true;
-let blackActive = true;
 
-const rows = document.querySelectorAll(".row");
+createGrid();
+setBlack();
 
 const controlPanel = document.querySelector("#control-panel");
 
 const blackButton = document.createElement("button");
 const resetButton = document.createElement("button");
 const colorButton = document.createElement("button");
-const darkeningButton = document.createElement("button");
+const colorStrengtheningButton = document.createElement("button");
+
 blackButton.textContent = "Paint it, Black!";
 resetButton.textContent = "Reset";
 colorButton.textContent = "Colors";
-darkeningButton.textContent = "Darken";
-controlPanel.append(resetButton, blackButton, colorButton, darkeningButton);
+colorStrengtheningButton.textContent = "Color Strength";
+controlPanel.append(resetButton, blackButton, colorButton, colorStrengtheningButton);
 
 resetButton.addEventListener("click", () => {
     resetGrid();
@@ -24,22 +23,18 @@ resetButton.addEventListener("click", () => {
 });
 
 blackButton.addEventListener("click", () => {
-    //darkenActive = false;
     setBlack();
-    deactivateDBlack();
+    deactivateColorStrength();
 });
 
 colorButton.addEventListener("click", () => {
-    //darkenActive = false;
     setColors();
-    deactivateDBlack();
+    deactivateColorStrength();
 });
 
-darkeningButton.addEventListener("click", () => {
-    //darkenActive = true;
-    //darkenBlack();
-    activateDBlack();
-})
+colorStrengtheningButton.addEventListener("click", () => {
+    activateColorStrength();
+});
 
 
 function createGrid() {
@@ -58,14 +53,14 @@ function createGrid() {
                 columnDiv.classList.add("row");
                 columnContainer.appendChild(columnDiv);
                 a++;
-            }
+            };
             a = 1;
             i++;
-        }
+        };
     } else {
         alert("Number too big or too small!!! - Press 'Reset' button to try again");
     };
-}
+};
 
 
 
@@ -73,7 +68,6 @@ function setBlack() {
     const rows = document.querySelectorAll(".row");
     rows.forEach((row) => {
         if (row.style.backgroundColor === "") {
-            //row.style.opacity = 1;
             row.addEventListener("mouseover", function cancelHandler() {
                 row.setAttribute("style", "background: black;");
                 row.removeEventListener("mouseover", cancelHandler);
@@ -87,20 +81,19 @@ function setColors() {
     const rows = document.querySelectorAll(".row");
     rows.forEach((row) => {
         if (row.style.backgroundColor === "") {
-            //row.style.opacity = 1;
             row.addEventListener("mouseover", function cancelHandler() {
                 row.setAttribute("style", `background: 
                     rgb(${Math.floor(Math.random() * 257)}, 
                     ${Math.floor(Math.random() * 257)}, 
                     ${Math.floor(Math.random() * 257)});`);
-                    row.removeEventListener("mouseover", cancelHandler);
-                });
-            };
-        });
-    };
-    
-    
-    
+                row.removeEventListener("mouseover", cancelHandler);
+            });
+        };
+    });
+};
+
+
+
 function resetGrid() {
     const columns = document.querySelectorAll(".columnOfColumns")
     columns.forEach((column) => {
@@ -108,50 +101,28 @@ function resetGrid() {
     });
 };
 
-/*function darkenBlack() {
+function activateColorStrength() {
     const rows = document.querySelectorAll(".row");
-    setBlack();
     rows.forEach((row) => {
-        //row.style.opacity = 0;
         if (row.style.backgroundColor === "") {
-            row.addEventListener("mouseover", function cancelHandler() {
-                if (row.style.opacity < 1) {
-                    row.style.opacity -= "-0.1";
-                } else if (row.style.opacity === 1) {
-                    row.removeEventListener("mouseover", cancelHandler);
-                };
-            });
+            row.addEventListener("mouseover", opacityColor);
         };
     });
-};*/
+};
 
-function activateDBlack() {
-    const rows = document.querySelectorAll(".row");
-    setBlack();
-    rows.forEach((row) => {
-        //row.style.opacity = 0; // Reset opacity
-        if (row.style.backgroundColor === "") {
-            row.addEventListener("mouseover", dBlack);
-        }
-    });
-}
-
-function deactivateDBlack() {
+function deactivateColorStrength() {
     const rows = document.querySelectorAll(".row");
     rows.forEach((row) => {
         if (row.style.backgroundColor === "") {
-            row.removeEventListener("mouseover", dBlack);
-        }
+            row.removeEventListener("mouseover", opacityColor);
+        };
     });
-}
+};
 
 
-function dBlack(event) {
+function opacityColor(event) {
     const row = event.currentTarget;
     if (row.style.opacity < 1) {
-        row.style.opacity -=  "-0.1";
-    }
-}
-
-createGrid();
-//setBlack();
+        row.style.opacity -= "-0.1";
+    };
+};
