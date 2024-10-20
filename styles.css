@@ -5,7 +5,7 @@ body {
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    background-color:sandybrown;
+    background-image: url(images/hussain-faruhaan-eJPZ4QJwR7w-unsplash.jpg);
 }
 
 #control-panel {
@@ -14,7 +14,7 @@ body {
 }
 
 button:hover {
-    background-color: #04AA6D; /* Green */
+    background-color: #04AA6D;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -24,14 +24,14 @@ button:hover {
     font-size: 16px;
     margin: 4px 2px;
     cursor:grabbing;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 button {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    background-color: #0928b4; /* Green */
+    background-color: #0928b4;
     border: none;
     color: rgb(152, 184, 226);
     padding: 15px 32px;
@@ -41,7 +41,7 @@ button {
     font-size: 16px;
     margin: 10px 5px;
     cursor:crosshair;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     
 }
@@ -52,7 +52,7 @@ button {
     width: 640px;
     border: solid black;
     justify-content: center;
-    background-color: silver;
+    background-color: rgb(192, 192, 192, 0.5);
 }
 
 .columnOfColumns {
